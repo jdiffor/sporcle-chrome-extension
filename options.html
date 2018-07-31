@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Test Extension Options</title>
+    </head>
+    <body>
+        Category:
+        <select id="category">
+            <option value="none">Any</option>
+            <option value="sports">Sports</option>
+            <option value="geography">Geography</option>
+            <option value="music">Music</option>
+            <option value="movies">Movies</option>
+            <option value="television">Television</option>
+            <option value="fun">Just For Fun</option>
+            <option value="miscellaneous">Miscellaneous</option>
+            <option value="history">History</option>
+            <option value="literature">Literature</option>
+            <option value="language">Language</option>
+            <option value="science">Science</option>
+            <option value="gaming">Gaming</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="religion">Religion</option>
+            <option value="holiday">Holiday</option>
+        </select>
+        Subcategory:
+        <select disabled id="subcategory">
+            <option value="none">Any</option>
+        </select>
+
+        <div id="status">
+            <button id="saveButton">Save</button>
+            <p style='display:inline; color:green;' id="saved"></p>
+        </div>
+
+
+
+        <script src="popup.js"></script>
+    </body>
+</html>
