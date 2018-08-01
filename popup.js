@@ -1,16 +1,31 @@
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-    var urlExtension = localStorage["urlExtension"];
-    if(typeof urlExtension === 'undefined') {
-        urlExtension = "";
-    }
-    window.open('https://www.sporcle.com/games/random.php' + urlExtension);
+document.addEventListener("DOMContentLoaded", function(event) {
+    setSelected();
 });
 
-
+function setSelected() {
+    var category = localStorage["category"];
+    var subcategory = localStorage["subcategory"];
+    if(!(typeof category === "undefined")) {
+        catSelect = document.getElementById("category");
+        catSelect.value = category;
+        if(!(typeof subcategory === "undefined") && !(category == 'none')) {
+            loadSubcategories(category);
+            subcatSelect = document.getElementById("subcategory");
+            subcatSelect.value = subcategory;
+            subcatSelect.disabled = false;
+        }
+    }
+}
 
 document.getElementById('category').addEventListener("change", categorySelected);
 document.getElementById('goButton').addEventListener('click', goToQuiz);
+document.getElementById('randomButton').addEventListener('click', goToDefaultRandomQuiz);
+
+function goToDefaultRandomQuiz() {
+    var url = 'https://www.sporcle.com/games/random.php';
+    window.open(url);
+}
 
 function goToQuiz() {
     var url = 'https://www.sporcle.com/games/random.php';

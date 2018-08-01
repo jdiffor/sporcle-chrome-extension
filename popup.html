@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Test Extension Options</title>
+        <title>Random Sporcle Quiz</title>
+
+        <style>
+            body {
+                width: 280px;
+                background-color: #f9f9f9;
+                font-size: 10pt;
+                font-weight: 200;
+            }
+            select, #goButton {
+                margin-top: 8px;
+            }
+            #category, #randomButton {
+                margin-top: 7px;
+            }
+            button {
+                background-color: rgb(255, 153, 0);;
+                border: none;
+                border-radius: 4px;
+                color: white;
+                padding: 13px 20px;
+                text-decoration: none;
+                margin: 2px 2px;
+                cursor: pointer;
+                font-size: 10pt;
+                font-weight: bold;
+            }
+            button:hover {
+                background-color: rgb(255, 132, 0);
+            }
+            .everything {
+                text-align: center;
+            }
+            select {
+                padding: 0;
+                box-sizing: border-box;
+                background-color: #ececec;
+                z-index: 2;
+                white-space: nowrap;
+                color: #111111;
+                border-radius: 6px;
+                box-shadow: 2px 2px 0 rgba(0,0,0,.15);
+            }
+            select:disabled {
+                color: #999999;
+            }
+
+        </style>
     </head>
     <body>
-        Category:
-        <select id="category">
-            <option value="none">Any</option>
-            <option value="sports">Sports</option>
-            <option value="geography">Geography</option>
-            <option value="music">Music</option>
-            <option value="movies">Movies</option>
-            <option value="television">Television</option>
-            <option value="fun">Just For Fun</option>
-            <option value="miscellaneous">Miscellaneous</option>
-            <option value="history">History</option>
-            <option value="literature">Literature</option>
-            <option value="language">Language</option>
-            <option value="science">Science</option>
-            <option value="gaming">Gaming</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="religion">Religion</option>
-            <option value="holiday">Holiday</option>
-        </select>
-        Subcategory:
-        <select disabled id="subcategory">
-            <option value="none">Any</option>
-        </select>
-
-        <div id="status">
+        <div class="everything">
+            Go to a totally random quiz:
+            <button id="randomButton">Random Quiz!</button>
+            <hr>
+            Or select a random quiz category:
+            <br>
+            Category:
+            <select id="category">
+                <option value="none">Any</option>
+                <option value="sports">Sports</option>
+                <option value="geography">Geography</option>
+                <option value="music">Music</option>
+                <option value="movies">Movies</option>
+                <option value="television">Television</option>
+                <option value="fun">Just For Fun</option>
+                <option value="miscellaneous">Miscellaneous</option>
+                <option value="history">History</option>
+                <option value="literature">Literature</option>
+                <option value="language">Language</option>
+                <option value="science">Science</option>
+                <option value="gaming">Gaming</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="religion">Religion</option>
+                <option value="holiday">Holiday</option>
+            </select>
+            <br>
+            Subcategory:
+            <select disabled id="subcategory">
+                <option value="none">Any</option>
+            </select>
+            <br>
             <button id="goButton">Go!</button>
         </div>
 
         <script src="popup.js"></script>
+
     </body>
 </html>

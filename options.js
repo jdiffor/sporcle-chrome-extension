@@ -1,20 +1,35 @@
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    setSelected();
+});
+
+function setSelected() {
+    var category = localStorage["category"];
+    var subcategory = localStorage["subcategory"];
+    if(!(typeof category === "undefined")) {
+        catSelect = document.getElementById("category");
+        catSelect.value = category;
+        if(!(typeof subcategory === "undefined") && !(category == 'none')) {
+            loadSubcategories(category);
+            subcatSelect = document.getElementById("subcategory");
+            subcatSelect.value = subcategory;
+            subcatSelect.disabled = false;
+        }
+    }
+}
+
 document.getElementById('category').addEventListener("change", categorySelected);
 document.getElementById('saveButton').addEventListener('click', saveSettings);
 
 function saveSettings() {
-    var e = document.getElementById("category");
-    var selectedCategory = e.options[e.selectedIndex].value;
-    if(selectedCategory == 'none') {
-        localStorage["urlExtension"] = "";
-    } else {
-        var d = document.getElementById("subcategory");
-        var selectedSubcategory = d.options[d.selectedIndex].value;
-        if(selectedSubcategory == 'none') {
-            localStorage["urlExtension"] = '?c=' + selectedCategory;
-        } else {
-            localStorage["urlExtension"] = '?sc=' + selectedSubcategory;
-        }
-    }
+    var c = document.getElementById("category");
+    var selectedCategory = c.options[c.selectedIndex].value;
+    var s = document.getElementById("subcategory");
+    var selectedSubcategory = s.options[s.selectedIndex].value;
+
+    localStorage["category"] = selectedCategory;
+    localStorage["subcategory"] = selectedSubcategory;
+
     document.getElementById("saved").innerHTML = "Saved!";
     fadeOut(document.getElementById("saved"));
 }
@@ -28,10 +43,14 @@ function fadeOut(elem) {
             elem.style.opacity -= 0.1;
         } else {
             clearInterval(fadeEffect);
+            doneFading(elem);
         }
     }, 80);
-    // elem.innerHTML = "";
-    // elem.style.opacity = 1;
+}
+
+function doneFading(elem) {
+    elem.innerHTML = "";
+    elem.style.opacity = 1;
 }
 
 function categorySelected() {
