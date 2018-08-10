@@ -40,7 +40,7 @@ function goToQuiz() {
         if(selectedSubcategory == 'none') {
             urlExtension = '?c=' + selectedCategory;
         } else {
-            urlExtension = '?sc=' + selectedSubcategory;
+            urlExtension = '?t=' + selectedSubcategory;
         }
     }
     window.open(url + urlExtension);
